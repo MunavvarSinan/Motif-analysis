@@ -1,0 +1,12 @@
+{% extends "protein_app/base.html" %}
+
+{% block content %}
+<h2>Enter Protein Sequence</h2>
+<form method="post" action="{% url 'analyze_protein' %}"> <!-- Correct the URL name -->
+    {% csrf_token %}
+    <label for="protein-sequence">Protein Sequence:</label>
+    <textarea id="protein-sequence" name="protein_sequence" rows="4" cols="50" required></textarea>
+    <br>
+    <button type="submit">Analyze</button>
+</form>
+{% endblock %}

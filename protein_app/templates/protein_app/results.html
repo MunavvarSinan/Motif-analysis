@@ -5,31 +5,15 @@
 <p>Protein Sequence:</p>
 <pre>{{ protein_sequence }}</pre>
 
-<!-- Display the generated sequence logos here -->
-
+{% for graph, center_letter in graphs %}
 <div>
-    <h3>Sequences with 'S' in the middle:</h3>
-    <div id="sequence-logo-s">
+    <h3>Sequences with '{{ center_letter }}' in the middle:</h3>
+    <div id="sequence-logo-{{ center_letter }}">
         <!-- Render the SVG content as raw HTML -->
-        <div style="width: 100%; height: 100%;">{{ svg_content | safe }}</div>
+        <div style="width: 100%; height: 100%;">{{ graph | safe }}</div>
     </div>
 </div>
-
-<div>
-    <h3>Sequences with 'T' in the middle:</h3>
-    <div id="sequence-logo-t">
-        <!-- Render the SVG content as raw HTML -->
-        <div style="width: 100%; height: 100%;">{{ svg_content_t | safe }}</div>
-    </div>
-</div>
-
-<div>
-    <h3>Sequences with 'Y' in the middle:</h3>
-    <div id="sequence-logo-y">
-        <!-- Render the SVG content as raw HTML -->
-        <div style="width: 100%; height: 100%;">{{ svg_content_y | safe }}</div>
-    </div>
-</div>
+{% endfor %}
 
 <p><a href="{% url 'analyze_protein' %}">Enter Another Sequence</a></p>
 {% endblock %}
